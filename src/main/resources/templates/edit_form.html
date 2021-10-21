@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Student</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg  navbar-light bg-dark">
+  <a class="navbar-brand text-secondary" >Student Management System</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/students}" color="white">Home <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 container justify-container-center card">
+      <h1 class="text-center">Update Student</h1>
+      <div class="card-body">
+        <form th:action ="@{/students/save}" th:object="${student}" method="post"
+          style="max-width:500px ; margin:0 auto;">
+          <input type="hidden" th:field="*{id}">
+          <div class="border border-secondary rounded p-3">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text"  th:field="*{firstName}"
+                     class="form-control" required minlength="4" maxlength="20" placeholder="Enter Student FirstName"/>
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text"  th:field="*{lastName}"
+                     class="form-control" required minlength="4" maxlength="20" placeholder="Enter Student LastName"/>
+            </div>
+
+            <div class="form-group">
+              <label>Email-Id</label>
+              <input type="email"  th:field="*{email}"
+                     class="form-control" required minlength="10" maxlength="45" placeholder="Enter Student email address"/>
+            </div>
+            <div class="box-footer">
+              <button type="submit" class=" btn btn-primary btn-circle btn-sm">Save</button>
+              <button type="button" class="btn btn-secondary btn-circle btn-sm"  onClick="cancelForm()">Cancel </button>
+
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script type="text/javascript">
+    function cancelForm(){
+    window.location= "[[@{/students}]]";
+    }
+</script>
+
+
+</body>
+</html>

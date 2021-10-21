@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login-teacher</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark" >
+    <a class="navbar-brand text-secondary text-center" >Student Management System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+    </div>
+</nav>
+<br>
+<br>
+
+<div class="container-fluid text-center">
+    <div><h1>Welcome to your Student Management</h1></div>
+<div>
+    <img src="file:///D:/images/school-management-icon.png" width="100" height="100" style="vertical-align:middle"></img>
+</div>
+    <div>
+        <h2> <a class="btn btn-primary" th:href="@{/login}">Login/SignIn</a>
+        <a class="btn btn-primary" th:href="@{/register}">Register/SignUp</a></h2>
+    </div>
+
+</div>
+
+</body>
+</html>

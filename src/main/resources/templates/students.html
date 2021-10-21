@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg  navbar-light bg-dark">
+    <a class="navbar-brand text-secondary">Student Management System </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+
+    </div>
+</nav>
+<br>
+
+          <div class="container-fluid">
+              <div>
+                  <form th:action="@{/logout}" method="post">
+                      <p>
+                          Welcome teacher <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+                      </p>
+                      <input type="submit" value="Sign-Out"/>
+                  </form>
+              </div>
+
+              <div>  <h1>Student Lists</h1></div>
+          <div>
+              <div class="row">
+                  <div class="col-lg-3">
+                      <a th:href="@{/students/new}" class="btn btn-primary btn-sm mb-3">Add New</a>
+                  </div>
+              </div>
+              <br>
+
+              <div th:if="${message}" class="alert alert-success text-center">
+                  [[${message}]]
+              </div>
+              <br>
+
+              <table class="table table-bordered table-striped ">
+                  <thead class="thead-dark">
+                  <tr>
+                      <th>Student ID</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Email-Id</th>
+                      <th>Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <th:block th:each="student: ${studentsList}">
+                  <tr>
+                  <td> [[${student.id}]]</td>
+                  <td >[[${student.firstName}]]</td>
+                  <td> [[${student.lastName}]]</td>
+                  <td> [[${student.email}]]</td>
+                      <td>
+                          <a th:href="@{'/students/edit/'+${student.id}}" class="btn btn-primary">Update</a>
+                          <a th:href="@{'/students/delete/'+${student.id}}" class="btn btn-danger">Delete</a>
+
+                      </td>
+                  </tr>
+                  </th:block>
+                  </tbody>
+              </table>
+          </div>
+
+
+              </div>
+</body>
+</html>

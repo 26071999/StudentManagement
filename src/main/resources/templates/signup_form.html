@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Register-teacher</title>
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark" >
+  <a class="navbar-brand text-secondary" >Student Management System</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/ }">Home <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br>
+
+<div class="container-fluid text-center">
+  <div ><h1 style="color:green">Teacher Registration</h1></div>
+  <br>
+  <div class="border border-secondary rounded p-3">
+    <form th:action ="@{/process_register}" th:object="${teacher}" method="post">
+    <div class="form-group row">
+      <label for="inputFirstName"  class="col-sm-2 col-form-label">First Name</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" th:field="*{firstName}" required minlength="4" id="inputFirstName" placeholder="First Name">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputLastName" class="col-sm-2 col-form-label">Last Name</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" th:field="*{lastName}" required minlength="4" id="inputLastName" placeholder="LastName">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="inputMobileNumber" class="col-sm-2 col-form-label">Mobile Number</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" th:field="*{mobileNumber}" required id="inputMobileNumber" placeholder="MobileNumber">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputBirthDate" class="col-sm-2 col-form-label">Date Of Birth</label>
+      <div class="col-sm-6">
+        <input type="date"  class="form-control" th:field="*{birthDate}" required  id="inputBirthDate" placeholder="yyyy-mm-dd" min="1980-01-01" max="1999-01-01">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-6">
+        <input type="email" class="form-control" th:field="*{email}" required minlength="15"  id="inputEmail3" placeholder="Email">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-6">
+        <input type="password" class="form-control" th:field="*{password}" required minlength="8" id="inputPassword3" placeholder="Password">
+      </div>
+    </div>
+    <fieldset class="form-group">
+      <div class="row">
+        <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+        <div class="col-sm-2" align="left">
+          <div class="form-check">
+            <input class="form-check-input" th:field="*{gender}" required  type="radio" name="gridRadios" id="gridRadios1" value="Male" checked>
+            <label class="form-check-label" for="gridRadios1">
+              Male
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" th:field="*{gender}" required type="radio" name="gridRadios" id="gridRadios2" value="Female">
+            <label class="form-check-label" for="gridRadios2">
+              Female
+            </label>
+          </div>
+          <div class="form-check disabled">
+            <input class="form-check-input" th:field="*{gender}" required type="radio" name="gridRadios" id="gridRadios3" value="Transgender" disabled>
+            <label class="form-check-label"  for="gridRadios3">
+              Transgender
+            </label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="form-group row" align="center">
+      <div class="col-sm-4">
+        <button type="submit" class="btn btn-primary">Sign Up/Register</button>
+      </div>
+    </div>
+
+    </form>
+</div>
+</div>
+
+</body>
+</html>
